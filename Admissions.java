@@ -3,9 +3,11 @@ import java.util.Scanner;
 public class Admissions {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("What is your last name?");
+        String name = scanner.next();
         System.out.println("What is your SAT Score?");
         int sat = scanner.nextInt();
-        System.out.println("What is your Class Rank?");
+        System.out.println("What is your Class Rank percentile?");
         int cr = scanner.nextInt();
         System.out.println("How many awards have you earned?");
         int awards = scanner.nextInt();
@@ -15,6 +17,9 @@ public class Admissions {
         int crRating = 0;
         int awardsRating = 0;
         int locationRating = 0;
+        String admission = "";
+        String reason = "";
+
 
 
         if (sat > 1500) {
@@ -44,15 +49,25 @@ public class Admissions {
         } else {
             awardsRating = 4;
         }
-        if (location == "Colorado") {
+        
+        if (location.equals("Colorado")) {
             locationRating = 1;
-        } else if (location != "Florida" && location != "Colorado") {
+        } else if (location.equals("Florida")) {
             locationRating = 4; 
         } else {
             locationRating = 3;
         }
         
-        System.out.println(locationRating);
+        if (satRating == 1 || crRating == 1 || awardsRating == 1 || locationRating == 1 || name.equals("Padjen")) {
+            admission = "Admitted";
+            reason = "You are elite in 1 or more area";
+        } else if (satRating == 2 || crRating == 1 || awardsRating == 1 || locationRating == 1 ) {
+            admission = "Admitted";
+            reason = "You are solid in 2 or more area";
+        } else if (satRating == 1 || crRating == 1 || awardsRating == 1 || locationRating == 1 ) {
+            admission = "Admitted";
+            reason = "";
+        }
 
         
         
