@@ -7,25 +7,38 @@ public class SnakeEyes {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many times would you like to run this simulation?");
         int n = scanner.nextInt();
-        int min = 1;
-        int max = 6;
+        int rolles = 0;
+        int denominator = n;
+        int max = 5;
         int score = 0;
-        int x = 0;
+        int avgscore = 0;
+        int avgrolles = 0;
+        int ifMore4 = 0;
 
-        while (x > 0) {
-            System.out.println("your new score is " + score);
-            int dice1 = diceGenerator.nextInt(max);
-            int dice2 = diceGenerator.nextInt(max);
-            n--;
-            if (dice1 == dice2) {
-                System.out.println("You got Snake Eyes, your turn is over");
-                n = 0;
-            } else {
-                System.out.println(dice1);
-                System.out.println(dice2);
-                score = score + (dice1 + dice2);
+            while (n > 0) {
+                int dice1 = diceGenerator.nextInt(max) + 1; 
+                int dice2 = diceGenerator.nextInt(max) + 1;
+                rolles++;
+                if (dice1 == dice2) {
+                    avgrolles = avgrolles + rolles;
+                    if (rolles > 4) {
+                        ifMore4 = ifMore4 + 1;
+                        System.out.println();
+                    }
+                    score = 0;
+                    rolles = 0;
+                    n = n - 1;
+                } else {
+                    score = score + (dice1 + dice2);
+                    avgrolles = avgrolles + rolles;
+                    avgscore = avgscore + score;
+                }
             }
-        }
-        System.out.println("Your score is " + score);
+        avgscore = avgscore / denominator;
+        avgrolles = avgrolles / denominator;
+        double percent4 = (ifMore4 / Double.valueOf(denominator)) * 100;
+        System.out.println("The average score is " + avgscore);
+        System.out.println("The average roles are " + avgrolles);
+        System.out.println("The percent of players with more than 4 roles are " + percent4 + "%");
     }
 }
