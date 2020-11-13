@@ -1,6 +1,7 @@
 class ColorTester {
     public static void main(String[] args) {
         Color color1= new Color(-2,55,257);
+        Color color2= new Color();
         System.out.println(color1);
         color1.randomize();
         System.out.println(color1);

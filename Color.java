@@ -2,9 +2,9 @@ import java.util.*;
 
 public class Color {
     Random colorGenerator = new Random();
-    int red;
-    int green;
-    int blue;
+    private int red;
+    private int green;
+    private int blue;
 
     public Color(int red, int green, int blue) {
         setRed((red));
@@ -13,10 +13,7 @@ public class Color {
     }
 
     public Color() {
-        setRed(colorGenerator.nextInt(256));
-        setGreen(colorGenerator.nextInt(256));
-        setBlue(colorGenerator.nextInt(256));
-        
+        randomize();
     }
 
     public void randomize() {
@@ -42,6 +39,7 @@ public class Color {
     public int getGreen() {return green;}
     public int getBlue() {return blue;}
 
+    
     public void darkenRed(double percent) {
         this.red = (int)(red * (1 + (-1 * percent)));
     }
