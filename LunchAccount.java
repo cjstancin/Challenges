@@ -12,11 +12,14 @@ public class LunchAccount {
         this.balance = balance;
         this.id = startId;
         startId++;
+        studentsFirstAdded++;
     }
 
     public LunchAccount(String student) {
         this.student = student;
         this.balance = 0;
+        this.id = startId;
+        startId++;
     }
 
     public String getStudent() {return student;}
@@ -26,6 +29,7 @@ public class LunchAccount {
         if (meal <= balance) {
             balance = balance - meal;
             moneySpent += meal;
+            lunchesBought++;
             return true;
         } else {
             return false;
@@ -34,7 +38,6 @@ public class LunchAccount {
     }
     
     public void addMoney(double money) {
-        if (money > 0) {
             if (this.balance == 0) {
                 studentsFirstAdded = studentsFirstAdded + 1;
                 if(studentsFirstAdded < 100) {
@@ -43,10 +46,12 @@ public class LunchAccount {
             }
             this.balance += money;
         }
-    }
 
-    public String ToString() {
-        return "name: " + student + "\nid: " + id + "\nBalance: $" + balance + "\nMoney Spent: $" + moneySpent;
+    public String toString() {
+        return 
+        "--------------------------------------" + 
+        "\nname: " + student + "\nid: " + id + "\nBalance: $" + balance + "\nMoney Spent: $" + moneySpent + "\nLunches Bought: " + lunchesBought +
+        "\n--------------------------------------";
     }
 
 
