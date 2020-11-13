@@ -22,6 +22,14 @@ public class LunchAccount {
         startId++;
     }
 
+    public LunchAccount(String student, double balance, double test) {
+        this.student = student;
+        this.balance = balance;
+        this.id = startId;
+        studentsFirstAdded += 100;
+    }
+
+
     public String getStudent() {return student;}
     public double getBalance() {return balance;}
 
@@ -38,6 +46,7 @@ public class LunchAccount {
     }
     
     public void addMoney(double money) {
+        if (money > 0) {
             if (this.balance == 0) {
                 studentsFirstAdded = studentsFirstAdded + 1;
                 if(studentsFirstAdded < 100) {
@@ -46,6 +55,7 @@ public class LunchAccount {
             }
             this.balance += money;
         }
+    }
 
     public String toString() {
         return 
